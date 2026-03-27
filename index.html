@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santos Clean | Higienização Profissional de Estofos no Algarve</title>
+    <meta name="description" content="Santos Clean - Higienização profissional de sofás, colchões e estofos no Algarve, Portugal. Orçamento rápido por WhatsApp.">
+    <meta property="og:title" content="Santos Clean - Higienização Profissional de Estofos">
+    <meta property="og:description" content="Cuidamos dos seus estofos com atenção total, eliminando ácaros, sujeira e odores.">
+    <meta property="og:image" content="logo.PNG">
+    <link rel="icon" type="image/png" href="logo.PNG">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --blue-900: #0a1628;
+            --blue-800: #0f2340;
+            --blue-700: #1a3a5c;
+            --blue-600: #1e5a8a;
+            --blue-500: #2680c2;
+            --blue-400: #4da3e0;
+            --blue-300: #7cc4f5;
+            --blue-200: #b6dffb;
+            --blue-100: #e0f2fe;
+            --blue-50: #f0f8ff;
+            --white: #ffffff;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-500: #64748b;
+            --gray-700: #334155;
+            --gray-900: #0f172a;
+            --gradient-blue: linear-gradient(135deg, #2680c2, #4da3e0);
+            --gradient-hero: linear-gradient(160deg, #f0f8ff 0%, #ffffff 50%, #e0f2fe 100%);
+            --gradient-cta: linear-gradient(135deg, #0f2340, #1e5a8a);
+            --font: 'Inter', system-ui, -apple-system, sans-serif;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 30px rgba(0,0,0,0.12);
+            --shadow-blue: 0 4px 20px rgba(38,128,194,0.25);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-full: 50px;
+        }
+
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font); color: var(--gray-900); background: var(--white); overflow-x: hidden; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 4rem); }
+        .section { padding: clamp(4rem, 8vw, 6rem) 0; }
+        .section-title { font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 800; text-align: center; margin-bottom: 1rem; color: var(--gray-900); }
+        .section-subtitle { text-align: center; color: var(--gray-500); font-size: 1.1rem; max-width: 600px; margin: 0 auto 3rem; line-height: 1.7; }
+        .section-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--blue-50); border: 1px solid var(--blue-200); color: var(--blue-600); border-radius: var(--radius-full); padding: 0.4rem 1rem; font-size: 0.8rem; font-weight: 600; margin-bottom: 1rem; }
+
+        /* Buttons - all blue, no green */
+        .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 2rem; border-radius: var(--radius-full); font-weight: 600; font-size: 1rem; text-decoration: none; border: none; cursor: pointer; transition: all 0.3s ease; font-family: var(--font); }
+        .btn-primary { background: var(--gradient-blue); color: var(--white); box-shadow: var(--shadow-blue); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(38,128,194,0.35); }
+        .btn-outline { border: 2px solid var(--blue-500); color: var(--blue-500); background: transparent; }
+        .btn-outline:hover { background: var(--blue-500); color: var(--white); transform: translateY(-2px); }
+        .btn-white { background: var(--white); color: var(--blue-600); box-shadow: var(--shadow-md); }
+        .btn-white:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+        .btn-dark { background: var(--blue-800); color: var(--white); box-shadow: 0 4px 15px rgba(15,35,64,0.3); }
+        .btn-dark:hover { background: var(--blue-700); transform: translateY(-2px); }
+        .btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+        /* Cards */
+        .card { background: var(--white); border-radius: var(--radius-lg); padding: 2rem; box-shadow: var(--shadow-sm); border: 1px solid var(--gray-200); transition: all 0.3s ease; }
+        .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+
+        /* Animations */
+        .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* ==================== NAVIGATION ==================== */
+        .nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 1000; transition: box-shadow 0.3s ease; border-bottom: 1px solid var(--gray-200); }
+        .nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 0; max-width: 1200px; margin: 0 auto; padding-left: clamp(1rem, 4vw, 2rem); padding-right: clamp(1rem, 4vw, 2rem); }
+        .nav-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+        .nav-logo { width: 150px; height: auto; }
+        .nav-name { font-weight: 800; font-size: 1.8rem; background: var(--gradient-blue); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .nav-name span { display: block; font-size: 0.65rem; font-weight: 500; color: var(--gray-500); text-transform: uppercase; letter-spacing: 1.5px; background: none; -webkit-background-clip: unset; -webkit-text-fill-color: var(--gray-500); background-clip: unset; }
+        .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--gray-700); font-weight: 500; font-size: 0.9rem; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--blue-500); }
+        .nav-cta { padding: 0.6rem 1.5rem !important; font-size: 0.875rem !important; color: var(--white) !important; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+        .hamburger span { display: block; width: 24px; height: 2.5px; background: var(--blue-500); border-radius: 2px; transition: all 0.3s ease; }
+        .mobile-menu { position: fixed; top: 0; right: 0; width: 300px; height: 100vh; background: var(--white); box-shadow: -5px 0 30px rgba(0,0,0,0.15); z-index: 1001; flex-direction: column; padding: 5rem 2rem 2rem; gap: 0.5rem; transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1); display: flex; }
+        .mobile-menu.open { transform: translateX(0); }
+        .mobile-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 1000; }
+        .mobile-overlay.open { display: block; }
+        .mobile-menu a { text-decoration: none; color: var(--gray-900); font-size: 1.1rem; font-weight: 600; padding: 0.75rem 1rem; border-radius: var(--radius-sm); transition: all 0.2s; }
+        .mobile-menu a:hover { color: var(--blue-500); background: var(--blue-50); }
+        .mobile-menu .btn { margin-top: 1rem; justify-content: center; color: var(--white) !important; }
+        .mobile-close { position: absolute; top: 1.25rem; right: 1.25rem; background: none; border: none; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; cursor: pointer; color: var(--gray-700); transition: background 0.2s; }
+        .mobile-close:hover { background: var(--gray-100); }
+
+        /* ==================== HERO ==================== */
+        .hero { background: var(--gradient-hero); padding: 10rem 0 5rem; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(38,128,194,0.08) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
+        .hero::after { content: ''; position: absolute; bottom: -30%; left: -10%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(77,163,224,0.06) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
+        .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; position: relative; z-index: 1; }
+        .hero-badge { display: inline-block; background: var(--blue-100); color: var(--blue-600); border-radius: var(--radius-full); padding: 0.5rem 1.25rem; font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem; }
+        .hero h1 { font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 800; line-height: 1.15; color: var(--gray-900); margin-bottom: 1.25rem; }
+        .hero-subtitle { font-size: 1.1rem; color: var(--gray-500); line-height: 1.7; margin-bottom: 1.75rem; }
+        .hero-checks { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; }
+        .hero-check { display: flex; align-items: center; gap: 0.6rem; font-weight: 500; color: var(--gray-700); }
+        .hero-check svg { width: 22px; height: 22px; color: var(--blue-500); flex-shrink: 0; }
+        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .hero-visual { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 1.5rem; }
+        .hero-img { width: 100%; max-width: 560px; border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); object-fit: cover; }
+        .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; width: 100%; max-width: 560px; background: var(--white); border-radius: var(--radius-lg); padding: 1.25rem; box-shadow: var(--shadow-md); }
+        .hero-stat { text-align: center; }
+        .hero-stat strong { display: block; font-size: 1.5rem; font-weight: 800; color: var(--blue-500); }
+        .hero-stat span { font-size: 0.8rem; color: var(--gray-500); }
+
+        /* ==================== ABOUT ==================== */
+        .about { background: var(--white); }
+        .about-content { max-width: 800px; margin: 0 auto; text-align: center; }
+        .about-content p { color: var(--gray-500); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.25rem; }
+
+        /* ==================== FOUNDER ==================== */
+        .founder { background: var(--gray-50); }
+        .founder-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: center; }
+        .founder-visual { position: relative; }
+        .founder-img-wrapper { position: relative; border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-lg); }
+        .founder-img-wrapper img { width: 100%; height: 480px; object-fit: cover; display: block; }
+        .founder-img-wrapper::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,22,40,0.4) 0%, transparent 50%); }
+        .founder-exp { position: absolute; bottom: 1.5rem; left: 1.5rem; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-radius: var(--radius-md); padding: 1rem 1.5rem; z-index: 2; box-shadow: var(--shadow-md); }
+        .founder-exp strong { display: block; font-size: 1.75rem; font-weight: 800; color: var(--blue-500); line-height: 1; }
+        .founder-exp span { font-size: 0.8rem; color: var(--gray-500); font-weight: 500; }
+        .founder-text h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; margin-bottom: 1.5rem; text-align: left; }
+        .founder-text p { color: var(--gray-500); font-size: 1.02rem; line-height: 1.8; margin-bottom: 1.25rem; }
+        .founder-highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+        .founder-highlight { display: flex; align-items: flex-start; gap: 0.75rem; padding: 1rem; background: var(--white); border-radius: var(--radius-md); border: 1px solid var(--gray-200); }
+        .founder-highlight-icon { width: 40px; height: 40px; border-radius: var(--radius-sm); background: var(--blue-50); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .founder-highlight-icon svg { width: 20px; height: 20px; color: var(--blue-500); }
+        .founder-highlight-text strong { display: block; font-size: 0.9rem; color: var(--gray-900); margin-bottom: 0.15rem; }
+        .founder-highlight-text span { font-size: 0.8rem; color: var(--gray-500); line-height: 1.4; }
+        .founder-signature { display: flex; align-items: center; gap: 1rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--gray-200); }
+        .founder-avatar { width: 56px; height: 56px; border-radius: 50%; background: var(--gradient-blue); display: flex; align-items: center; justify-content: center; color: var(--white); font-weight: 800; font-size: 1.25rem; flex-shrink: 0; }
+        .founder-sig-info strong { display: block; color: var(--gray-900); font-size: 1rem; }
+        .founder-sig-info span { color: var(--gray-500); font-size: 0.85rem; }
+
+        /* ==================== SERVICES CAROUSEL ==================== */
+        .services { background: var(--white); overflow: hidden; }
+        .services-carousel-wrapper { position: relative; max-width: 1200px; margin: 0 auto; overflow: hidden; padding: 0 clamp(1.5rem, 5vw, 4rem); }
+        .services-row { display: flex; gap: 1.5rem; width: max-content; padding: 0.5rem 0; }
+        .services-row:hover { animation-play-state: paused; }
+        .services-row-1 { animation: scroll-svc-left 35s linear infinite; }
+        .services-row-2 { animation: scroll-svc-right 40s linear infinite; margin-top: 1.5rem; }
+        .service-slide { flex-shrink: 0; width: 300px; position: relative; border-radius: var(--radius-lg); overflow: hidden; cursor: pointer; }
+        .service-slide img { width: 100%; height: 220px; object-fit: cover; display: block; transition: transform 0.5s ease; }
+        .service-slide:hover img { transform: scale(1.08); }
+        .service-slide-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.25rem; background: linear-gradient(transparent, rgba(0,0,0,0.75)); color: var(--white); }
+        .service-slide-overlay h3 { font-size: 1.1rem; font-weight: 700; }
+        .service-slide-overlay p { font-size: 0.78rem; opacity: 0.85; margin-top: 0.15rem; }
+
+        @keyframes scroll-svc-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        @keyframes scroll-svc-right {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+
+        .services-note { text-align: center; color: var(--gray-500); font-size: 1rem; max-width: 700px; margin: 2.5rem auto 0; line-height: 1.7; }
+
+        /* ==================== DIFFERENTIALS ==================== */
+        .differentials { background: var(--blue-50); }
+        .diff-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+        .diff-card { text-align: center; padding: 2.5rem 1.5rem; }
+        .diff-icon { width: 60px; height: 60px; border-radius: 50%; background: var(--gradient-blue); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; }
+        .diff-icon svg { width: 28px; height: 28px; color: var(--white); }
+        .diff-card h3 { font-weight: 700; font-size: 1.05rem; margin-bottom: 0.5rem; }
+        .diff-card p { color: var(--gray-500); font-size: 0.925rem; line-height: 1.6; }
+
+        /* ==================== HOW IT WORKS ==================== */
+        .how-it-works { background: var(--white); }
+        .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; position: relative; }
+        .steps::before { content: ''; position: absolute; top: 28px; left: 12.5%; right: 12.5%; height: 3px; background: var(--blue-200); z-index: 0; }
+        .step { text-align: center; position: relative; z-index: 1; }
+        .step-number { width: 56px; height: 56px; border-radius: 50%; background: var(--gradient-blue); color: var(--white); font-weight: 800; font-size: 1.4rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; box-shadow: var(--shadow-blue); }
+        .step h3 { font-weight: 700; font-size: 1rem; margin-bottom: 0.4rem; color: var(--gray-900); }
+        .step p { color: var(--gray-500); font-size: 0.9rem; line-height: 1.5; }
+
+        /* ==================== FORM ==================== */
+        .form-section { background: var(--gray-50); }
+        .form-card { background: var(--white); max-width: 600px; margin: 0 auto; border-radius: var(--radius-xl); padding: clamp(2rem, 4vw, 3rem); box-shadow: var(--shadow-md); }
+        .form-group { margin-bottom: 1.25rem; }
+        .form-group label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.4rem; color: var(--gray-700); }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.875rem 1rem; border: 1.5px solid var(--gray-200); border-radius: var(--radius-sm); font-size: 1rem; font-family: var(--font); transition: border-color 0.2s, box-shadow 0.2s; background: var(--white); color: var(--gray-900); }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--blue-500); box-shadow: 0 0 0 3px rgba(38,128,194,0.15); }
+        .form-group textarea { resize: vertical; min-height: 100px; }
+        .file-upload { border: 2px dashed var(--gray-300); border-radius: var(--radius-md); padding: 2rem; text-align: center; cursor: pointer; transition: all 0.3s ease; position: relative; }
+        .file-upload:hover { border-color: var(--blue-400); background: var(--blue-50); }
+        .file-upload input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+        .file-upload svg { width: 40px; height: 40px; color: var(--blue-400); margin-bottom: 0.5rem; }
+        .file-upload p { color: var(--gray-500); font-size: 0.9rem; }
+        .file-upload .file-name { margin-top: 0.5rem; font-weight: 600; color: var(--blue-600); font-size: 0.85rem; }
+        .form-submit { width: 100%; margin-top: 0.5rem; }
+
+        /* ==================== WHATSAPP CTA (BLUE) ==================== */
+        .whatsapp-cta { background: var(--gradient-blue); color: var(--white); text-align: center; }
+        .whatsapp-cta .section-title { color: var(--white); }
+        .whatsapp-cta p { color: rgba(255,255,255,0.9); font-size: 1.1rem; max-width: 600px; margin: 0 auto 2rem; line-height: 1.7; }
+
+        /* ==================== TESTIMONIALS MARQUEE ==================== */
+        .social-proof { background: var(--gray-50); overflow: hidden; }
+        .marquee-wrapper { max-width: 1200px; margin: 0 auto; overflow: hidden; padding: 0 clamp(1.5rem, 5vw, 4rem); }
+        .marquee-row { display: flex; gap: 1.5rem; width: max-content; padding: 0.75rem 0; }
+        .marquee-row-1 { animation: marquee-left 40s linear infinite; }
+        .marquee-row-2 { animation: marquee-right 45s linear infinite; }
+        .marquee-row:hover { animation-play-state: paused; }
+
+        @keyframes marquee-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        @keyframes marquee-right {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+
+        .review-card {
+            flex-shrink: 0;
+            width: 340px;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 1.75rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-200);
+            position: relative;
+        }
+        .review-quote-icon { position: absolute; top: 1rem; right: 1.25rem; font-size: 2rem; color: var(--blue-200); font-weight: 800; line-height: 1; font-family: Georgia, serif; }
+        .review-card blockquote { color: var(--gray-700); font-size: 0.92rem; line-height: 1.65; margin-bottom: 1.25rem; font-style: normal; }
+        .review-author { display: flex; align-items: center; gap: 0.75rem; }
+        .review-avatar { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; }
+        .review-avatar-fallback { width: 42px; height: 42px; border-radius: 50%; background: var(--blue-100); display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--blue-600); font-size: 0.9rem; flex-shrink: 0; }
+        .review-author-info strong { display: block; font-size: 0.9rem; color: var(--gray-900); }
+        .review-author-info span { font-size: 0.8rem; color: var(--gray-500); }
+
+        /* ==================== LOCATION ==================== */
+        .location { background: var(--blue-50); }
+        .location-content { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+        .location-text p { color: var(--gray-500); font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.5rem; }
+        .location-map { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); }
+        .location-map iframe { width: 100%; height: 350px; border: none; display: block; }
+
+        /* ==================== CLOSING CTA ==================== */
+        .closing-cta { background: var(--gradient-cta); color: var(--white); text-align: center; }
+        .closing-cta .section-title { color: var(--white); }
+        .closing-cta p { color: rgba(255,255,255,0.85); font-size: 1.1rem; max-width: 650px; margin: 0 auto 2rem; line-height: 1.7; }
+        .closing-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+        /* ==================== FOOTER ==================== */
+        .footer { background: var(--blue-900); color: rgba(255,255,255,0.7); padding: 3rem 0 1.5rem; }
+        .footer-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 1.5rem; }
+        .footer-brand p { font-size: 0.9rem; line-height: 1.6; max-width: 350px; }
+        .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; list-style: none; }
+        .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--white); }
+        .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 0.85rem; }
+        .footer-social { display: flex; gap: 1rem; }
+        .footer-social a { color: rgba(255,255,255,0.5); transition: color 0.2s; }
+        .footer-social a:hover { color: var(--white); }
+        .footer-social svg { width: 20px; height: 20px; }
+
+        /* ==================== FLOATING WHATSAPP (BLUE) ==================== */
+        .floating-whatsapp { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 998; width: 60px; height: 60px; border-radius: 50%; background: var(--gradient-blue); display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-blue); text-decoration: none; transition: transform 0.3s ease; animation: pulse-wa 2s ease-in-out infinite; }
+        .floating-whatsapp:hover { transform: scale(1.1); }
+        .floating-whatsapp svg { width: 30px; height: 30px; color: var(--white); }
+        @keyframes pulse-wa {
+            0%, 100% { box-shadow: var(--shadow-blue); }
+            50% { box-shadow: var(--shadow-blue), 0 0 0 12px rgba(38,128,194,0.15); }
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 1024px) {
+            .diff-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-links { gap: 1.5rem; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .nav-logo { width: 120px; }
+            .nav-name { font-size: 1rem; }
+            .hero-inner { grid-template-columns: 1fr; text-align: center; }
+            .hero-checks { align-items: center; }
+            .hero-buttons { justify-content: center; }
+            .hero-visual { order: -1; }
+            .hero-img { max-width: 100%; }
+            .steps { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
+            .steps::before { display: none; }
+            .founder-grid { grid-template-columns: 1fr; }
+            .founder-img-wrapper img { height: 350px; }
+            .founder-text h2 { text-align: center; }
+            .founder-highlights { grid-template-columns: 1fr 1fr; }
+            .founder-signature { justify-content: center; }
+            .footer-top { flex-direction: column; text-align: center; }
+            .footer-links { justify-content: center; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .service-slide { width: 260px; }
+            .service-slide img { height: 220px; }
+        }
+        @media (max-width: 480px) {
+            .hero { padding: 6.5rem 0 3rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .btn { width: 100%; justify-content: center; }
+            .diff-grid { grid-template-columns: 1fr; }
+            .steps { grid-template-columns: 1fr; }
+            .closing-buttons { flex-direction: column; align-items: center; }
+            .review-card { width: 290px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="#inicio" class="nav-brand">
+                <div class="nav-name">Santos Clean<span>Higienização de Estofos</span></div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#como-funciona">Como Funciona</a></li>
+                <li><a href="#avaliacoes">Avaliações</a></li>
+                <li><a href="https://wa.me/351967730572?text=Ol%C3%A1%2C%20gostaria%20de%20pedir%20um%20or%C3%A7amento%20para%20higieniza%C3%A7%C3%A3o%20de%20estofos." class="btn btn-primary nav-cta" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Pedir Orçamento</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-close" id="mobileClose" aria-label="Fechar">&times;</button>
+        <a href="#sobre" class="mobile-link">Sobre</a>
+        <a href="#servicos" class="mobile-link">Serviços</a>
+        <a href="#como-funciona" class="mobile-link">Como Funciona</a>
+        <a href="#avaliacoes" class="mobile-link">Avaliações</a>
+        <a href="https://wa.me/351967730572?text=Ol%C3%A1%2C%20gostaria%20de%20pedir%20um%20or%C3%A7amento%20para%20higieniza%C3%A7%C3%A3o%20de%20estofos." class="btn btn-primary" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="width:20px;height:20px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Pedir Orçamento</a>
+    </div>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <div class="hero-inner">
+                <div class="hero-text">
+                    <div class="hero-badge fade-up">Higienização Profissional no Algarve</div>
+                    <h1 class="fade-up">Higienização Profissional de Sofás, Colchões e Estofos em Portugal</h1>
+                    <p class="hero-subtitle fade-up">Cuidamos dos seus estofos com atenção total, eliminando ácaros, sujeira e odores — deixando tudo limpo, seguro e renovado.</p>
+                    <div class="hero-checks fade-up">
+                        <div class="hero-check">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Atendimento personalizado
+                        </div>
+                        <div class="hero-check">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Orçamento rápido por WhatsApp
+                        </div>
+                        <div class="hero-check">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Descontos para clientes recorrentes
+                        </div>
+                    </div>
+                    <div class="hero-buttons fade-up">
+                        <a href="https://wa.me/351967730572?text=Ol%C3%A1%2C%20gostaria%20de%20pedir%20um%20or%C3%A7amento%20para%20higieniza%C3%A7%C3%A3o%20de%20estofos." class="btn btn-primary" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            Pedir Orçamento no WhatsApp
+                        </a>
+                        <a href="#servicos" class="btn btn-outline">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            Ver Serviços
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual fade-up">
+                    <img src="servicio.png" alt="Higienização profissional de estofos - Santos Clean" class="hero-img">
+                    <div class="hero-stats">
+                        <div class="hero-stat"><strong>5+</strong><span>Anos em Portugal</span></div>
+                        <div class="hero-stat"><strong>100%</strong><span>Satisfação</span></div>
+                        <div class="hero-stat"><strong>Algarve</strong><span>Região atendida</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT COMPANY ==================== -->
+    <section class="section about" id="sobre">
+        <div class="container">
+            <h2 class="section-title fade-up">Quem é a Santos Clean?</h2>
+            <div class="about-content fade-up">
+                <p>A Santos Clean é especializada em higienização profissional de estofos, atendendo clientes residenciais e empresariais em Portugal.</p>
+                <p>Nosso foco vai muito além da limpeza: oferecemos um atendimento totalmente personalizado, entendendo a necessidade de cada cliente e cuidando de cada peça como se fosse nossa.</p>
+                <p>Trabalhamos com sofás, colchões, poltronas, tapetes e outros estofados, sempre utilizando técnicas adequadas para garantir um resultado eficiente, seguro e duradouro.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOUNDER ==================== -->
+    <section class="section founder">
+        <div class="container">
+            <div class="founder-grid">
+                <div class="founder-visual fade-up">
+                    <div class="founder-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=640&q=80" alt="Diego Quintana dos Santos - Fundador Santos Clean" loading="lazy">
+                        <div class="founder-exp">
+                            <strong>5+</strong>
+                            <span>anos em Portugal</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="founder-text fade-up">
+                    <span class="section-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Sobre o Fundador</span>
+                    <h2>Quem está por trás da Santos Clean</h2>
+                    <p>A Santos Clean foi fundada por <strong>Diego Quintana dos Santos</strong>, brasileiro, de 37 anos, residente em Portugal há mais de 5 anos.</p>
+                    <p>Com espírito empreendedor e foco em excelência no atendimento, Diego criou a empresa com um objetivo muito claro: oferecer soluções completas e personalizadas para higienização de estofos.</p>
+                    <p>Sua visão vai além da limpeza — é sobre cuidado, confiança e atenção aos detalhes.</p>
+                    <div class="founder-highlights">
+                        <div class="founder-highlight">
+                            <div class="founder-highlight-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                            <div class="founder-highlight-text"><strong>Confiança</strong><span>Cada cliente é tratado de forma única</span></div>
+                        </div>
+                        <div class="founder-highlight">
+                            <div class="founder-highlight-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                            <div class="founder-highlight-text"><strong>Qualidade</strong><span>Resultado eficiente e duradouro</span></div>
+                        </div>
+                        <div class="founder-highlight">
+                            <div class="founder-highlight-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+                            <div class="founder-highlight-text"><strong>Dedicação</strong><span>Compromisso com cada detalhe</span></div>
+                        </div>
+                        <div class="founder-highlight">
+                            <div class="founder-highlight-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+                            <div class="founder-highlight-text"><strong>Agilidade</strong><span>Orçamento rápido pelo WhatsApp</span></div>
+                        </div>
+                    </div>
+                    <div class="founder-signature">
+                        <div class="founder-avatar">DS</div>
+                        <div class="founder-sig-info">
+                            <strong>Diego Quintana dos Santos</strong>
+                            <span>Fundador da Santos Clean</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SERVICES CAROUSEL ==================== -->
+    <section class="section services" id="servicos">
+        <div class="container">
+            <div style="text-align:center;" class="fade-up"><span class="section-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Nossos Serviços</span></div>
+            <h2 class="section-title fade-up">O que higienizamos</h2>
+            <p class="section-subtitle fade-up">Serviços profissionais de higienização para todos os tipos de estofos</p>
+        </div>
+        <div class="services-carousel-wrapper">
+            <!-- Fila 1: izquierda -->
+            <div class="services-row services-row-1">
+                <div class="service-slide"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=640&q=80" alt="Sofás" loading="lazy"><div class="service-slide-overlay"><h3>Sofás</h3><p>Higienização profunda</p></div></div>
+                <div class="service-slide"><img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=640&q=80" alt="Colchões" loading="lazy"><div class="service-slide-overlay"><h3>Colchões</h3><p>Eliminação de ácaros</p></div></div>
+                <div class="service-slide"><img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=640&q=80" alt="Poltronas" loading="lazy"><div class="service-slide-overlay"><h3>Poltronas</h3><p>Cuidado total</p></div></div>
+                <div class="service-slide"><img src="https://images.unsplash.com/photo-1600166898405-da9535204843?w=640&q=80" alt="Tapetes" loading="lazy"><div class="service-slide-overlay"><h3>Tapetes</h3><p>Limpeza profunda</p></div></div>
+                <div class="service-slide"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=640&q=80" alt="Carpetes" loading="lazy"><div class="service-slide-overlay"><h3>Carpetes</h3><p>Remoção de manchas</p></div></div>
+                <div class="service-slide"><img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=640&q=80" alt="Estofos em geral" loading="lazy"><div class="service-slide-overlay"><h3>Estofos em geral</h3><p>Todos os tipos</p></div></div>
+                <!-- Duplicados -->
+                <div class="service-slide"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=640&q=80" alt="Sofás" loading="lazy"><div class="service-slide-overlay"><h3>Sofás</h3><p>Higienização profunda</p></div></div>
+                <div class="service-slide"><img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=640&q=80" alt="Colchões" loading="lazy"><div class="service-slide-overlay"><h3>Colchões</h3><p>Eliminação de ácaros</p></div></div>
+                <div class="service-slide"><img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=640&q=80" alt="Poltronas" loading="lazy"><div class="service-slide-overlay"><h3>Poltronas</h3><p>Cuidado total</p></div></div>
+                <div class="service-slide"><img src="https://images.unsplash.com/photo-1600166898405-da9535204843?w=640&q=80" alt="Tapetes" loading="lazy"><div class="service-slide-overlay"><h3>Tapetes</h3><p>Limpeza profunda</p></div></div>
+                <div class="service-slide"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=640&q=80" alt="Carpetes" loading="lazy"><div class="service-slide-overlay"><h3>Carpetes</h3><p>Remoção de manchas</p></div></div>
+                <div class="service-slide"><img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=640&q=80" alt="Estofos em geral" loading="lazy"><div class="service-slide-overlay"><h3>Estofos em geral</h3><p>Todos os tipos</p></div></div>
+            </div>
+            <!-- Fila 2: derecha -->
+            <div class="services-row services-row-2">
+                <div class="service-slide"><img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=640&q=80" alt="Estofos em geral" loading="lazy"><div class="service-slide-overlay"><h3>Estofos em geral</h3><p>Todos os tipos</p></div></div>
+                <div class="service-slide"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=640&q=80" alt="Sofás" loading="lazy"><div class="service-slide-overlay"><h3>Sofás</h3><p>Higienização profunda</p></div></div>
+                <div class="service-slide"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=640&q=80" alt="Carpetes" loading="lazy"><div class="service-slide-overlay"><h3>Carpetes</h3><p>Remoção de manchas</p></div></div>
+                <div class="service-slide"><img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=640&q=80" alt="Colchões" loading="lazy"><div class="service-slide-overlay"><h3>Colchões</h3><p>Eliminação de ácaros</p></div></div>
+                <div class="service-slide"><img src="https://images.unsplash.com/photo-1600166898405-da9535204843?w=640&q=80" alt="Tapetes" loading="lazy"><div class="service-slide-overlay"><h3>Tapetes</h3><p>Limpeza profunda</p></div></div>
+                <div class="service-slide"><img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=640&q=80" alt="Poltronas" loading="lazy"><div class="service-slide-overlay"><h3>Poltronas</h3><p>Cuidado total</p></div></div>
+                <!-- Duplicados -->
+                <div class="service-slide"><img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=640&q=80" alt="Estofos em geral" loading="lazy"><div class="service-slide-overlay"><h3>Estofos em geral</h3><p>Todos os tipos</p></div></div>
+                <div class="service-slide"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=640&q=80" alt="Sofás" loading="lazy"><div class="service-slide-overlay"><h3>Sofás</h3><p>Higienização profunda</p></div></div>
+                <div class="service-slide"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=640&q=80" alt="Carpetes" loading="lazy"><div class="service-slide-overlay"><h3>Carpetes</h3><p>Remoção de manchas</p></div></div>
+                <div class="service-slide"><img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=640&q=80" alt="Colchões" loading="lazy"><div class="service-slide-overlay"><h3>Colchões</h3><p>Eliminação de ácaros</p></div></div>
+                <div class="service-slide"><img src="https://images.unsplash.com/photo-1600166898405-da9535204843?w=640&q=80" alt="Tapetes" loading="lazy"><div class="service-slide-overlay"><h3>Tapetes</h3><p>Limpeza profunda</p></div></div>
+                <div class="service-slide"><img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=640&q=80" alt="Poltronas" loading="lazy"><div class="service-slide-overlay"><h3>Poltronas</h3><p>Cuidado total</p></div></div>
+            </div>
+        </div>
+        <div class="container">
+            <p class="services-note fade-up">Removemos sujeiras profundas, manchas, odores e ácaros, contribuindo diretamente para sua saúde, bem-estar e conservação dos seus estofos.</p>
+        </div>
+    </section>
+
+    <!-- ==================== DIFFERENTIALS ==================== -->
+    <section class="section differentials">
+        <div class="container">
+            <h2 class="section-title fade-up">Por que escolher a Santos Clean?</h2>
+            <p class="section-subtitle fade-up">O que nos diferencia no mercado de higienização profissional</p>
+            <div class="diff-grid">
+                <div class="card diff-card fade-up">
+                    <div class="diff-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <h3>Atendimento focado no cliente</h3>
+                    <p>Cada serviço é pensado de acordo com a sua real necessidade.</p>
+                </div>
+                <div class="card diff-card fade-up">
+                    <div class="diff-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3>Cuidado total com seus estofos</h3>
+                    <p>Tratamos cada peça com máxima atenção e segurança.</p>
+                </div>
+                <div class="card diff-card fade-up">
+                    <div class="diff-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    </div>
+                    <h3>Orçamento rápido e prático</h3>
+                    <p>Envie uma foto e receba seu orçamento rapidamente.</p>
+                </div>
+                <div class="card diff-card fade-up">
+                    <div class="diff-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    </div>
+                    <h3>Fidelização com benefícios</h3>
+                    <p>Clientes recorrentes recebem descontos exclusivos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== HOW IT WORKS ==================== -->
+    <section class="section how-it-works" id="como-funciona">
+        <div class="container">
+            <h2 class="section-title fade-up">Simples, rápido e sem complicação</h2>
+            <p class="section-subtitle fade-up">Veja como é fácil cuidar dos seus estofos</p>
+            <div class="steps">
+                <div class="step fade-up"><div class="step-number">1</div><h3>Envie uma foto</h3><p>Fotografe o estofado e envie-nos pelo WhatsApp ou formulário.</p></div>
+                <div class="step fade-up"><div class="step-number">2</div><h3>Receba o orçamento</h3><p>Analisamos e enviamos o orçamento rapidamente.</p></div>
+                <div class="step fade-up"><div class="step-number">3</div><h3>Agendamos o dia</h3><p>Escolhemos juntos o melhor dia para o serviço.</p></div>
+                <div class="step fade-up"><div class="step-number">4</div><h3>Higienização no local</h3><p>Realizamos a higienização diretamente na sua casa ou empresa.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== WHATSAPP CTA (BLUE) ==================== -->
+    <section class="section whatsapp-cta">
+        <div class="container">
+            <h2 class="section-title fade-up">Prefere falar direto?</h2>
+            <p class="fade-up">Clique no botão abaixo, envie uma foto do seu estofado e receba seu orçamento rapidamente pelo WhatsApp.</p>
+            <div class="fade-up">
+                <a href="https://wa.me/351967730572?text=Ol%C3%A1%2C%20gostaria%20de%20pedir%20um%20or%C3%A7amento%20para%20higieniza%C3%A7%C3%A3o%20de%20estofos." class="btn btn-white" target="_blank" rel="noopener" style="background:linear-gradient(135deg, #ffffff, #e2e8f0);color:var(--gray-700);box-shadow:var(--shadow-md)">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Falar no WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== TESTIMONIALS MARQUEE ==================== -->
+    <section class="section social-proof" id="avaliacoes">
+        <div class="container">
+            <h2 class="section-title fade-up">O que dizem nossos clientes</h2>
+            <p class="section-subtitle fade-up">Veja a opinião de quem já utilizou nossos serviços e confia na Santos Clean.</p>
+        </div>
+        <div class="marquee-wrapper">
+            <!-- Row 1: moves left -->
+            <div class="marquee-row marquee-row-1">
+                <div class="review-card"><span class="review-quote-icon">"</span><blockquote>Serviço excelente! O meu sofá ficou como novo. O Diego foi muito profissional e atencioso. Recomendo a todos!</blockquote><div class="review-author"><div class="review-avatar-fallback">MC</div><div class="review-author-info"><strong>Maria Costa</strong><span>Faro</span></div></div></div>
+                <div class="review-card"><span class="review-quote-icon">"</span><blockquote>Contratei para limpar os colchões e tapetes. Resultado incrível, cheiro maravilhoso. Já agendei a próxima visita!</blockquote><div class="review-author"><div class="review-avatar-fallback">PS</div><div class="review-author-info"><strong>Pedro Silva</strong><span>Albufeira</span></div></div></div>
+                <div class="review-card"><span class="review-quote-icon">"</span><blockquote>O atendimento pelo WhatsApp foi super rápido. Enviámos fotos e recebemos o orçamento na hora. Profissionalismo total.</blockquote><div class="review-author"><div class="review-avatar-fallback">AF</div><div class="review-author-info"><strong>Ana Ferreira</strong><span>Portimão</span></div></div></div>
+                <div class="review-card"><span class="review-quote-icon">"</span><blockquote>Trabalho impecável nos sofás do nosso escritório. Toda a equipa notou a diferença. Vamos contratar regularmente!</blockquote><div class="review-author"><div class="review-avatar-fallback">RL</div><div class="review-author-info"><strong>Ricardo Lopes</strong><span>Lagos</span></div></div></div>
+                <div class="review-card"><span class="review-quote-icon">"</span><blockquote>Preço justo e resultado perfeito. O colchão do meu filho tinha manchas antigas e saíram todas. Super satisfeita!</blockquote><div class="review-author"><div class="review-avatar-fallback">SM</div><div class="review-author-info"><strong>Sofia Mendes</strong><span>Faro</span></div></div></div>
+                <!-- Duplicados para loop -->
+                <div class="review-card"><span class="review-quote-icon">"</span><blockquote>Serviço excelente! O meu sofá ficou como novo. O Diego foi muito profissional e atencioso. Recomendo a todos!</blockquote><div class="review-author"><div class="review-avatar-fallback">MC</div><div class="review-author-info"><strong>Maria Costa</strong><span>Faro</span></div></div></div>
+                <div class="review-card"><span class="review-quote-icon">"</span><blockquote>Contratei para limpar os colchões e tapetes. Resultado incrível, cheiro maravilhoso. Já agendei a próxima visita!</blockquote><div class="review-author"><div class="review-avatar-fallback">PS</div><div class="review-author-info"><strong>Pedro Silva</strong><span>Albufeira</span></div></div></div>
+                <div class="review-card"><span class="review-quote-icon">"</span><blockquote>O atendimento pelo WhatsApp foi super rápido. Enviámos fotos e recebemos o orçamento na hora. Profissionalismo total.</blockquote><div class="review-author"><div class="review-avatar-fallback">AF</div><div class="review-author-info"><strong>Ana Ferreira</strong><span>Portimão</span></div></div></div>
+                <div class="review-card"><span class="review-quote-icon">"</span><blockquote>Trabalho impecável nos sofás do nosso escritório. Toda a equipa notou a diferença. Vamos contratar regularmente!</blockquote><div class="review-author"><div class="review-avatar-fallback">RL</div><div class="review-author-info"><strong>Ricardo Lopes</strong><span>Lagos</span></div></div></div>
+                <div class="review-card"><span class="review-quote-icon">"</span><blockquote>Preço justo e resultado perfeito. O colchão do meu filho tinha manchas antigas e saíram todas. Super satisfeita!</blockquote><div class="review-author"><div class="review-avatar-fallback">SM</div><div class="review-author-info"><strong>Sofia Mendes</strong><span>Faro</span></div></div></div>
+            </div>
+            <!-- Row 2: moves right -->
+            <div class="marquee-row marquee-row-2">
+                <div class="review-card"><span class="review-quote-icon">"</span><blockquote>Muito cuidadoso com os detalhes. O meu tapete persa estava muito sujo e ficou impecável. Nota 10!</blockquote><div class="review-author"><div class="review-avatar-fallback">JO</div><div class="review-author-info"><strong>João Oliveira</strong><span>Tavira</span></div></div></div>
+                <div class="review-card"><span class="review-quote-icon">"</span><blockquote>Serviço pontual e eficiente. Higienizaram 3 sofás e 4 colchões num só dia. Excelente custo-benefício!</blockquote><div class="review-author"><div class="review-avatar-fallback">CP</div><div class="review-author-info"><strong>Carla Pereira</strong><span>Loulé</span></div></div></div>
+                <div class="review-card"><span class="review-quote-icon">"</span><blockquote>Fiz a higienização para preparar a casa para o bebé. Fiquei muito mais tranquila sabendo que está tudo limpo e seguro.</blockquote><div class="review-author"><div class="review-avatar-fallback">BN</div><div class="review-author-info"><strong>Beatriz Nunes</strong><span>Olhão</span></div></div></div>
+                <div class="review-card"><span class="review-quote-icon">"</span><blockquote>O Diego é super atencioso e explica todo o processo. Dá para ver que tem paixão pelo que faz. Recomendo muito!</blockquote><div class="review-author"><div class="review-avatar-fallback">MA</div><div class="review-author-info"><strong>Miguel Almeida</strong><span>Vilamoura</span></div></div></div>
+                <div class="review-card"><span class="review-quote-icon">"</span><blockquote>Já é a terceira vez que contrato e cada vez fico mais satisfeita. Os descontos para clientes frequentes são ótimos!</blockquote><div class="review-author"><div class="review-avatar-fallback">TR</div><div class="review-author-info"><strong>Teresa Rodrigues</strong><span>Silves</span></div></div></div>
+                <!-- Duplicados para loop -->
+                <div class="review-card"><span class="review-quote-icon">"</span><blockquote>Muito cuidadoso com os detalhes. O meu tapete persa estava muito sujo e ficou impecável. Nota 10!</blockquote><div class="review-author"><div class="review-avatar-fallback">JO</div><div class="review-author-info"><strong>João Oliveira</strong><span>Tavira</span></div></div></div>
+                <div class="review-card"><span class="review-quote-icon">"</span><blockquote>Serviço pontual e eficiente. Higienizaram 3 sofás e 4 colchões num só dia. Excelente custo-benefício!</blockquote><div class="review-author"><div class="review-avatar-fallback">CP</div><div class="review-author-info"><strong>Carla Pereira</strong><span>Loulé</span></div></div></div>
+                <div class="review-card"><span class="review-quote-icon">"</span><blockquote>Fiz a higienização para preparar a casa para o bebé. Fiquei muito mais tranquila sabendo que está tudo limpo e seguro.</blockquote><div class="review-author"><div class="review-avatar-fallback">BN</div><div class="review-author-info"><strong>Beatriz Nunes</strong><span>Olhão</span></div></div></div>
+                <div class="review-card"><span class="review-quote-icon">"</span><blockquote>O Diego é super atencioso e explica todo o processo. Dá para ver que tem paixão pelo que faz. Recomendo muito!</blockquote><div class="review-author"><div class="review-avatar-fallback">MA</div><div class="review-author-info"><strong>Miguel Almeida</strong><span>Vilamoura</span></div></div></div>
+                <div class="review-card"><span class="review-quote-icon">"</span><blockquote>Já é a terceira vez que contrato e cada vez fico mais satisfeita. Os descontos para clientes frequentes são ótimos!</blockquote><div class="review-author"><div class="review-avatar-fallback">TR</div><div class="review-author-info"><strong>Teresa Rodrigues</strong><span>Silves</span></div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CLOSING CTA ==================== -->
+    <section class="section closing-cta">
+        <div class="container">
+            <h2 class="section-title fade-up">Seus estofos limpos, higienizados e como novos</h2>
+            <p class="fade-up">Não espere a sujeira acumular. Cuide da sua saúde, do seu conforto e aumente a durabilidade dos seus estofos com a Santos Clean.</p>
+            <div class="closing-buttons fade-up">
+                <a href="#orcamento" class="btn btn-white">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                    Pedir Orçamento
+                </a>
+                <a href="https://wa.me/351967730572?text=Ol%C3%A1%2C%20gostaria%20de%20pedir%20um%20or%C3%A7amento%20para%20higieniza%C3%A7%C3%A3o%20de%20estofos." class="btn btn-primary" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Falar no WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <p>Santos Clean — Higienização profissional de estofos no Algarve, Portugal.</p>
+                </div>
+                <ul class="footer-links">
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#como-funciona">Como Funciona</a></li>
+                    <li><a href="#avaliacoes">Avaliações</a></li>
+                    <li><a href="https://wa.me/351967730572" target="_blank" rel="noopener">WhatsApp</a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 Santos Clean. Todos os direitos reservados.</span>
+                <div class="footer-social">
+                    <a href="https://wa.me/351967730572" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== FLOATING WHATSAPP (BLUE) ==================== -->
+    <a href="https://wa.me/351967730572?text=Ol%C3%A1%2C%20gostaria%20de%20pedir%20um%20or%C3%A7amento%20para%20higieniza%C3%A7%C3%A3o%20de%20estofos." class="floating-whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        // Scroll animations
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('visible'); fadeObserver.unobserve(entry.target); }
+            });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
+
+        // Nav shadow
+        const nav = document.getElementById('nav');
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) { requestAnimationFrame(() => { nav.classList.toggle('scrolled', window.scrollY > 80); ticking = false; }); ticking = true; }
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const id = this.getAttribute('href');
+                if (id === '#') return;
+                const target = document.querySelector(id);
+                if (target) { e.preventDefault(); window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - nav.offsetHeight - 16, behavior: 'smooth' }); closeMenu(); }
+            });
+        });
+
+        // Mobile menu
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        function openMenu() { mobileMenu.classList.add('open'); mobileOverlay.classList.add('open'); }
+        function closeMenu() { mobileMenu.classList.remove('open'); mobileOverlay.classList.remove('open'); }
+        document.getElementById('hamburger').addEventListener('click', openMenu);
+        document.getElementById('mobileClose').addEventListener('click', closeMenu);
+        mobileOverlay.addEventListener('click', closeMenu);
+
+    </script>
+</body>
+</html>

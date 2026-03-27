@@ -1,0 +1,322 @@
+Envío la información que me envió Diego
+
+Te la envío en español primero para que sepan que dice: 
+
+LANDING PAGE – SANTOS CLEAN (VERSIÓN FINAL)
+
+🟢 1. HERO (PRIMERA DOBLA)
+
+Título principal:
+
+Higienización profesional de sofás, colchones y tapicería en Portugal
+
+Subtítulo:
+
+Cuidamos su tapicería con total atención, eliminando ácaros, suciedad y olores, dejando todo limpio, seguro y renovado.
+
+Destacados:
+
+✔ Atención personalizada
+
+✔ Presupuesto rápido por WhatsApp
+
+✔ Descuentos para clientes recurrentes
+
+
+Botones:
+
+👉 Solicitar presupuesto en WhatsApp
+
+👉 Enviar fotos para evaluación
+
+🟢 2. ACERCA DE LA EMPRESA
+
+Título:
+
+¿Quién es Santos Clean?
+
+Texto:
+
+Santos Clean se especializa en la desinfección profesional de tapicería, atendiendo a clientes residenciales y comerciales en Portugal.
+
+Nuestro enfoque va mucho más allá de la limpieza: ofrecemos un servicio totalmente personalizado, entendiendo las necesidades de cada cliente y cuidando cada pieza como si fuera nuestra.
+
+Trabajamos con sofás, colchones, sillones, alfombras y otros tapizados, siempre utilizando técnicas adecuadas para garantizar un resultado eficiente, seguro y duradero.
+
+
+3.⁠ ⁠SOBRE EL FUNDADOR
+
+Título:
+
+¿Quién está detrás de Santos Clean?
+
+Texto:
+
+Santos Clean fue fundada por Diego Quintana dos Santos, brasileño, de 37 años, residente en Portugal desde hace más de 5 años.
+
+Con espíritu emprendedor y enfoque en la excelencia en el servicio, Diego creó la empresa con un objetivo muy claro: ofrecer soluciones completas y personalizadas para la higienización de tapicería, atendiendo tanto a empresas como a residencias.
+
+Su visión va más allá de la limpieza: se trata de cuidado, confianza y atención a los detalles. Cada cliente es tratado de forma única, garantizando no solo un servicio de calidad, sino una experiencia diferenciada.
+
+Este compromiso con el cliente es lo que hace que Santos Clean crezca y fidelice a cada vez más personas.
+
+4.⁠ ⁠SERVICIOS
+
+Título:
+
+Lo que higienizamos
+
+Lista:
+
+Sofás
+
+Colchones
+
+Sillones
+
+Alfombras
+
+Alfombras
+
+Tapicería en general
+
+Complemento:
+
+Eliminamos suciedad profunda, manchas, olores y ácaros, contribuyendo directamente a su salud, bienestar y conservación de su tapicería.
+
+
+5.⁠ ⁠DIFERENCIALES
+
+Título:
+
+¿Por qué elegir Santos Clean?
+
+Artículos:
+
+🔹 Atención centrada en el cliente
+
+Cada servicio está pensado de acuerdo a su necesidad real.
+
+
+🔹 Cuidado total con su tapicería
+
+Tratamos cada pieza con la máxima atención y seguridad.
+
+🔹 Presupuesto rápido y práctico
+
+Envíe una foto y reciba su presupuesto rápidamente.
+
+🔹 Fidelización con beneficios
+
+Los clientes recurrentes reciben descuentos exclusivos.
+
+6.⁠ ⁠CÓMO FUNCIONA
+
+Título:
+
+Sencillo, rápido y sin complicaciones
+
+Paso a paso:
+
+1️⃣ Envías una foto de la tapicería
+
+2️⃣ Analizamos y enviamos el presupuesto
+
+3️⃣ Programamos el mejor día
+
+4️⃣ Realizamos la desinfección en el lugar
+
+🟢 7. FORMULARIO
+
+Título:
+
+Solicite su presupuesto ahora
+
+Campos:
+
+Nombre
+
+Teléfono
+
+Ciudad
+
+Tipo de tapicería
+
+
+Mensaje (opcional)
+
+Subir imagen 📷
+
+Botón:
+
+👉 Enviar solicitud de presupuesto
+
+🟢 8. WHATSAPP (DESTACADO FUERTE)
+
+Título:
+
+¿Prefieres hablar directamente?
+
+Texto:
+
+Haga clic en el botón de abajo, envíe una foto de su tapicería y reciba su presupuesto rápidamente por WhatsApp.
+
+Botón:
+
+👉 Hablar por WhatsApp
+
+🟢 9. PRUEBA SOCIAL
+
+Título:
+
+Lo que dicen nuestros clientes
+
+Texto:
+
+Vea la opinión de quienes han utilizado nuestros servicios y confían en Santos Clean.
+
+Instrucción para dev:
+
+Integrar reseñas de Google (Perfil de Google)
+
+🟢 10. UBICACIÓN
+
+Atención a domicilio
+
+Atendemos la región del Algarve en Portugal, con agilidad y compromiso con el cliente.
+
+Instrucción:
+
+Insertar mapa + enlace de perfil de Google
+
+🟢 11. CIERRE (CTA FINAL)
+
+Título:
+
+Su tapicería limpia, desinfectada y como nueva
+
+Texto:
+
+No esperes a que la suciedad se acumule. Cuide su salud, su comodidad y aumente la durabilidad de su tapicería con Santos Clean.
+
+Botones:
+
+👉 Solicitar Presupuesto
+
+👉 Hablar por WhatsApp
+
+🟢 12. PIE DE PÁGINA
+
+Santos Clean
+
+Contacto / WhatsApp
+
+Enlace de perfil de Google
+
+Derechos reservados
+
+
+LANDING PAGE – SANTOS CLEAN (VERSÃO FINAL)
+🟢 1. HERO (PRIMEIRA DOBRA)
+Título principal:
+Higienização Profissional de Sofás, Colchões e Estofos em Portugal
+Subtítulo:
+Cuidamos dos seus estofos com atenção total, eliminando ácaros, sujeira e odores — deixando tudo limpo, seguro e renovado.
+Destaques:
+✔ Atendimento personalizado
+✔ Orçamento rápido por WhatsApp
+✔ Descontos para clientes recorrentes
+Botões:
+👉 Pedir Orçamento no WhatsApp
+👉 Enviar Fotos para Avaliação
+🟢 2. SOBRE A EMPRESA
+Título:
+Quem é a Santos Clean?
+Texto:
+A Santos Clean é especializada em higienização profissional de estofos, atendendo clientes residenciais e empresariais em Portugal.
+Nosso foco vai muito além da limpeza: oferecemos um atendimento totalmente personalizado, entendendo a necessidade de cada cliente e cuidando de cada peça como se fosse nossa.
+Trabalhamos com sofás, colchões, poltronas, tapetes e outros estofados, sempre utilizando técnicas adequadas para garantir um resultado eficiente, seguro e duradouro.
+🟢 3. SOBRE O FUNDADOR
+Título:
+Quem está por trás da Santos Clean
+Texto:
+A Santos Clean foi fundada por Diego Quintana dos Santos, brasileiro, de 37 anos, residente em Portugal há mais de 5 anos.
+Com espírito empreendedor e foco em excelência no atendimento, Diego criou a empresa com um objetivo muito claro: oferecer soluções completas e personalizadas para higienização de estofos, atendendo tanto empresas quanto residências.
+Sua visão vai além da limpeza — é sobre cuidado, confiança e atenção aos detalhes. Cada cliente é tratado de forma única, garantindo não apenas um serviço de qualidade, mas uma experiência diferenciada.
+Esse compromisso com o cliente é o que faz a Santos Clean crescer e fidelizar cada vez mais pessoas.
+🟢 4. SERVIÇOS
+Título:
+O que higienizamos
+Lista:
+Sofás
+Colchões
+Poltronas
+Tapetes
+Carpetes
+Estofos em geral
+Complemento:
+Removemos sujeiras profundas, manchas, odores e ácaros, contribuindo diretamente para sua saúde, bem-estar e conservação dos seus estofos.
+🟢 5. DIFERENCIAIS
+Título:
+Por que escolher a Santos Clean?
+Itens:
+🔹 Atendimento focado no cliente
+Cada serviço é pensado de acordo com a sua real necessidade.
+🔹 Cuidado total com seus estofos
+Tratamos cada peça com máxima atenção e segurança.
+🔹 Orçamento rápido e prático
+Envie uma foto e receba seu orçamento rapidamente.
+🔹 Fidelização com benefícios
+Clientes recorrentes recebem descontos exclusivos.
+🟢 6. COMO FUNCIONA
+Título:
+Simples, rápido e sem complicação
+Passo a passo:
+1️⃣ Você envia uma foto do estofado
+2️⃣ Analisamos e enviamos o orçamento
+3️⃣ Agendamos o melhor dia
+4️⃣ Realizamos a higienização no local
+🟢 7. FORMULÁRIO
+Título:
+Peça seu orçamento agora
+Campos:
+Nome
+Telefone
+Cidade
+Tipo de estofado
+Mensagem (opcional)
+Upload de imagem 📷
+Botão:
+👉 Enviar pedido de orçamento
+🟢 8. WHATSAPP (DESTAQUE FORTE)
+Título:
+Prefere falar direto?
+Texto:
+Clique no botão abaixo, envie uma foto do seu estofado e receba seu orçamento rapidamente pelo WhatsApp.
+Botão:
+👉 Falar no WhatsApp
+🟢 9. PROVA SOCIAL
+Título:
+O que dizem nossos clientes
+Texto:
+Veja a opinião de quem já utilizou nossos serviços e confia na Santos Clean.
+Instrução para dev:
+Integrar avaliações do Google (Google Profile)
+🟢 10. LOCALIZAÇÃO
+Atendimento a domicílio 
+Atendemos a região do Algarve em Portugal, com agilidade e compromisso com o cliente.
+Instrução:
+Inserir mapa + link do Google Profile
+🟢 11. FECHAMENTO (CTA FINAL)
+Título:
+Seus estofos limpos, higienizados e como novos
+Texto:
+Não espere a sujeira acumular. Cuide da sua saúde, do seu conforto e aumente a durabilidade dos seus estofos com a Santos Clean.
+Botões:
+👉 Pedir Orçamento
+👉 Falar no WhatsApp
+🟢 12. RODAPÉ
+Santos Clean
+Contato / WhatsApp
+Link Google Profile
+Direitos reservados

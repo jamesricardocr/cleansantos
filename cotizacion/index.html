@@ -1,0 +1,1829 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotización Landing Page | JC2R S.A.S para Juli Agencia Creativa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a2e;
+            --bg-card-hover: #1f1f35;
+            --accent-green: #98ca3f;
+            --accent-green-dark: #7ba832;
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --accent-orange: #f59e0b;
+            --text-primary: #f1f1f1;
+            --text-secondary: #a1a1b5;
+            --text-muted: #6b6b80;
+            --border: #2a2a3e;
+            --gradient-green: linear-gradient(135deg, #98ca3f, #6db33f);
+            --gradient-premium: linear-gradient(135deg, #8b5cf6, #3b82f6);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(152, 202, 63, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 50% 80%, rgba(59, 130, 246, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .floating-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.12;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--accent-green);
+            top: -100px;
+            right: -100px;
+            animation: float1 8s ease-in-out infinite;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--accent-purple);
+            bottom: -50px;
+            left: -50px;
+            animation: float2 10s ease-in-out infinite;
+        }
+
+        @keyframes float1 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-40px, 40px); }
+        }
+
+        @keyframes float2 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -30px); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(152, 202, 63, 0.3); }
+            50% { box-shadow: 0 0 0 12px rgba(152, 202, 63, 0); }
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { border-color: rgba(152, 202, 63, 0.2); }
+            50% { border-color: rgba(152, 202, 63, 0.5); }
+        }
+
+        @keyframes seoGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(152, 202, 63, 0.1); }
+            50% { box-shadow: 0 0 40px rgba(152, 202, 63, 0.25); }
+        }
+
+        @keyframes floatSocial {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .animate-up {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+
+        /* Floating Social Buttons */
+        .floating-socials {
+            position: fixed;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            z-index: 200;
+        }
+
+        .social-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            animation: floatSocial 3s ease-in-out infinite;
+        }
+
+        .social-btn:nth-child(2) { animation-delay: 0.3s; }
+        .social-btn:nth-child(3) { animation-delay: 0.6s; }
+        .social-btn:nth-child(4) { animation-delay: 0.9s; }
+
+        .social-btn svg {
+            width: 22px;
+            height: 22px;
+            fill: white;
+            transition: transform 0.3s;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px) scale(1.1);
+        }
+
+        .social-btn:hover svg {
+            transform: scale(1.1);
+        }
+
+        .social-btn .tooltip {
+            position: absolute;
+            right: 60px;
+            background: var(--bg-card);
+            color: var(--text-primary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s;
+            border: 1px solid var(--border);
+        }
+
+        .social-btn:hover .tooltip {
+            opacity: 1;
+            right: 56px;
+        }
+
+        .social-whatsapp {
+            background: #25D366;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .social-instagram {
+            background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            box-shadow: 0 4px 15px rgba(225, 48, 108, 0.3);
+        }
+
+        .social-facebook {
+            background: #1877F2;
+            box-shadow: 0 4px 15px rgba(24, 119, 242, 0.3);
+        }
+
+        .social-tiktok {
+            background: #010101;
+            border: 1px solid #333;
+            box-shadow: 0 4px 15px rgba(255, 0, 80, 0.2);
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 0.8rem 2rem;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .nav-logo {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            object-fit: contain;
+            background: #1a1a1a;
+        }
+
+        .nav-company {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .nav-company span {
+            display: block;
+            font-size: 0.65rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .nav-doc-type {
+            font-size: 0.75rem;
+            padding: 0.4rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Header / Cotización info */
+        .header-section {
+            position: relative;
+            z-index: 1;
+            padding: 7rem 2rem 3rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .doc-header {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .doc-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .doc-title-block {
+            flex: 1;
+        }
+
+        .doc-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-green);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .doc-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .doc-title span {
+            color: var(--accent-green);
+        }
+
+        .doc-logo-block {
+            text-align: right;
+        }
+
+        .doc-logo-block img {
+            width: 80px;
+            height: 80px;
+            border-radius: 14px;
+            object-fit: cover;
+            border: 2px solid var(--border);
+        }
+
+        .doc-logo-block .company-name {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-top: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .doc-logo-block .company-type {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .doc-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .meta-item label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .meta-item span {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* Scope description */
+        .scope-section {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 2rem 0;
+        }
+
+        .scope-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.5rem;
+        }
+
+        .scope-card h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .scope-card > p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* SEO Highlight */
+        .seo-highlight {
+            background: linear-gradient(135deg, rgba(152, 202, 63, 0.08), rgba(152, 202, 63, 0.03));
+            border: 1px solid rgba(152, 202, 63, 0.25);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            animation: seoGlow 3s ease-in-out infinite;
+        }
+
+        .seo-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            background: rgba(152, 202, 63, 0.15);
+            border-radius: 50px;
+            color: var(--accent-green);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .seo-badge .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .seo-highlight h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--accent-green);
+        }
+
+        .seo-highlight p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .seo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+
+        .seo-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            padding: 0.7rem;
+            background: rgba(152, 202, 63, 0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(152, 202, 63, 0.1);
+        }
+
+        .seo-item .icon {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            background: rgba(152, 202, 63, 0.15);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+        }
+
+        .seo-item .text {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .seo-item .text strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 0.1rem;
+            font-size: 0.82rem;
+        }
+
+        /* Social buttons highlight */
+        .social-highlight {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(59, 130, 246, 0.03));
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-highlight-icon {
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-premium);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-highlight-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        .social-highlight-text {
+            flex: 1;
+        }
+
+        .social-highlight-text h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .social-highlight-text p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .social-icons-preview {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .social-icons-preview span {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-icons-preview span svg {
+            width: 18px;
+            height: 18px;
+            fill: white;
+        }
+
+        /* Quotes / options */
+        .options-section {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .option-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .option-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            transition: opacity 0.3s;
+        }
+
+        .option-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(152, 202, 63, 0.3);
+            background: var(--bg-card-hover);
+        }
+
+        .option-1::before {
+            background: var(--gradient-green);
+        }
+
+        .option-2::before {
+            background: var(--gradient-premium);
+        }
+
+        .option-2 {
+            border-color: rgba(139, 92, 246, 0.3);
+            animation: borderGlow 4s ease-in-out infinite;
+        }
+
+        .option-tag {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .tag-1 {
+            background: rgba(152, 202, 63, 0.12);
+            color: var(--accent-green);
+        }
+
+        .tag-2 {
+            background: rgba(139, 92, 246, 0.12);
+            color: var(--accent-purple);
+        }
+
+        .option-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+
+        .option-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .option-price {
+            margin-bottom: 1.8rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .price-value {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .price-currency {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .price-note {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.3rem;
+        }
+
+        .option-includes {
+            list-style: none;
+        }
+
+        .option-includes li {
+            padding: 0.55rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.7rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            border-bottom: 1px solid rgba(42, 42, 62, 0.4);
+        }
+
+        .option-includes li:last-child {
+            border-bottom: none;
+        }
+
+        .option-includes li .check {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1px;
+        }
+
+        .option-includes li .check svg {
+            width: 12px;
+            height: 12px;
+        }
+
+        .check-green {
+            background: rgba(152, 202, 63, 0.15);
+        }
+
+        .check-purple {
+            background: rgba(139, 92, 246, 0.15);
+        }
+
+        .option-includes li.highlight-item {
+            background: rgba(152, 202, 63, 0.05);
+            margin: 0.2rem -0.5rem;
+            padding: 0.6rem 0.5rem;
+            border-radius: 8px;
+            color: var(--accent-green);
+            font-weight: 600;
+        }
+
+        .option-2 .option-includes li.highlight-item {
+            background: rgba(139, 92, 246, 0.05);
+            color: var(--accent-purple);
+        }
+
+        /* Comparison */
+        .comparison-section {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem 3rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .comparison-table thead th {
+            padding: 1.1rem 1.2rem;
+            text-align: left;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            background: rgba(26, 26, 46, 0.8);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .comparison-table thead th:not(:first-child) {
+            text-align: center;
+        }
+
+        .comparison-table td {
+            padding: 0.85rem 1.2rem;
+            border-bottom: 1px solid rgba(42, 42, 62, 0.5);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .comparison-table td:not(:first-child) {
+            text-align: center;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:hover {
+            background: rgba(152, 202, 63, 0.03);
+        }
+
+        .comparison-table tr.row-highlight {
+            background: rgba(152, 202, 63, 0.05);
+        }
+
+        .comparison-table tr.row-highlight td:first-child {
+            color: var(--accent-green);
+            font-weight: 600;
+        }
+
+        .check-icon { color: var(--accent-green); font-weight: 700; }
+        .cross-icon { color: var(--text-muted); }
+
+        /* Conditions */
+        .conditions-section {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem 3rem;
+        }
+
+        .conditions-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.5rem;
+        }
+
+        .conditions-card h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .conditions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .condition-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            border: 1px solid rgba(42, 42, 62, 0.5);
+        }
+
+        .condition-icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            background: rgba(152, 202, 63, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .condition-text h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+
+        .condition-text p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        /* Renewal highlight */
+        .renewal-highlight {
+            margin-top: 1.5rem;
+            padding: 1.8rem 2rem;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.03));
+            border: 2px solid rgba(245, 158, 11, 0.35);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+            animation: renewalGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes renewalGlow {
+            0%, 100% { box-shadow: 0 0 15px rgba(245, 158, 11, 0.08); }
+            50% { box-shadow: 0 0 35px rgba(245, 158, 11, 0.18); }
+        }
+
+        .renewal-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex: 1;
+        }
+
+        .renewal-icon {
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            background: rgba(245, 158, 11, 0.15);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .renewal-left h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fbbf24;
+            margin-bottom: 0.3rem;
+        }
+
+        .renewal-left p {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .renewal-price-box {
+            text-align: center;
+            flex-shrink: 0;
+            padding: 1rem 1.8rem;
+            background: rgba(245, 158, 11, 0.12);
+            border-radius: 14px;
+            border: 1px solid rgba(245, 158, 11, 0.25);
+        }
+
+        .renewal-price {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #fbbf24;
+            line-height: 1;
+        }
+
+        .renewal-price span {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .renewal-period {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            margin-top: 0.3rem;
+        }
+
+        /* Process timeline */
+        .process-section {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem 3rem;
+        }
+
+        .process-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.5rem;
+        }
+
+        .process-card h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .timeline-step {
+            display: flex;
+            gap: 1.2rem;
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        .timeline-step:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-marker {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .timeline-dot {
+            width: 36px;
+            height: 36px;
+            background: var(--gradient-green);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.85rem;
+            color: var(--bg-primary);
+            z-index: 1;
+        }
+
+        .timeline-line {
+            width: 2px;
+            flex: 1;
+            background: var(--border);
+            margin-top: 0.3rem;
+        }
+
+        .timeline-step:last-child .timeline-line {
+            display: none;
+        }
+
+        .timeline-content {
+            padding-top: 0.3rem;
+        }
+
+        .timeline-content h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+
+        .timeline-content p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Signature / CTA */
+        .signature-section {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+
+        .signature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .signature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-green);
+        }
+
+        .validity-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            border-radius: 8px;
+            color: var(--accent-orange);
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .signature-card h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .signature-card > p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .signature-boxes {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .sig-box {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .sig-box h4 {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .sig-box .sig-name {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+
+        .sig-box .sig-company {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .sig-box .sig-line {
+            margin-top: 2rem;
+            border-top: 1px solid var(--border);
+            padding-top: 0.5rem;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2.2rem;
+            background: var(--gradient-green);
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(152, 202, 63, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 1.5rem 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+        }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .floating-socials {
+                right: 0.8rem;
+            }
+
+            .social-btn {
+                width: 40px;
+                height: 40px;
+            }
+
+            .social-btn svg {
+                width: 18px;
+                height: 18px;
+            }
+
+            .doc-top {
+                flex-direction: column;
+            }
+
+            .doc-logo-block {
+                text-align: left;
+            }
+
+            .signature-boxes {
+                grid-template-columns: 1fr;
+            }
+
+            .seo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                padding: 0.6rem 1rem;
+            }
+
+            .social-btn .tooltip {
+                display: none;
+            }
+
+            .comparison-section {
+                padding: 0 0.8rem 3rem;
+            }
+
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .comparison-table thead,
+            .comparison-table tbody {
+                display: table;
+                width: 100%;
+                table-layout: fixed;
+            }
+
+            .comparison-table td,
+            .comparison-table th {
+                padding: 0.6rem 0.5rem;
+                font-size: 0.72rem;
+                word-break: break-word;
+            }
+
+            .comparison-table td:first-child,
+            .comparison-table th:first-child {
+                width: 42%;
+            }
+
+            .comparison-table td:not(:first-child),
+            .comparison-table th:not(:first-child) {
+                width: 29%;
+            }
+
+            .renewal-highlight {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .renewal-left {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media print {
+            .floating-socials,
+            .bg-grid,
+            .floating-orb {
+                display: none;
+            }
+
+            body {
+                background: white;
+                color: #111;
+            }
+
+            .option-card,
+            .doc-header,
+            .scope-card,
+            .conditions-card,
+            .process-card,
+            .signature-card,
+            .comparison-table {
+                background: white;
+                border-color: #ddd;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-grid"></div>
+    <div class="floating-orb orb-1"></div>
+    <div class="floating-orb orb-2"></div>
+
+    <!-- Floating Social Buttons -->
+
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-brand">
+            <img src="jc2r_logo.png" alt="JC2R S.A.S" class="nav-logo">
+            <div class="nav-company">
+                JC2R S.A.S
+                <span>Soluciones Digitales</span>
+            </div>
+        </div>
+        <div class="nav-doc-type">Cotización #001-2026</div>
+    </nav>
+
+    <!-- Document Header -->
+    <section class="header-section animate-up delay-1">
+        <div class="doc-header">
+            <div class="doc-top">
+                <div class="doc-title-block">
+                    <div class="doc-label">Cotización de servicios</div>
+                    <div class="doc-title">
+                        Desarrollo de <span>Landing Page</span> Profesional
+                    </div>
+                </div>
+                <div class="doc-logo-block">
+                    <img src="jc2r_logo.png" alt="JC2R S.A.S">
+                    <div class="company-name">JC2R S.A.S</div>
+                    <div class="company-type">NIT: 901.949.042-1</div>
+                </div>
+            </div>
+
+            <div class="doc-meta">
+                <div class="meta-item">
+                    <label>Preparado para</label>
+                    <span>Juli Agencia Creativa</span>
+                </div>
+                <div class="meta-item">
+                    <label>Elaborado por</label>
+                    <span>JC2R S.A.S</span>
+                </div>
+                <div class="meta-item">
+                    <label>Fecha de emisión</label>
+                    <span>13 de marzo de 2026</span>
+                </div>
+                <div class="meta-item">
+                    <label>Válida hasta</label>
+                    <span>27 de marzo de 2026</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scope -->
+    <section class="scope-section animate-up delay-2">
+        <div class="scope-card">
+            <h2>Alcance del proyecto</h2>
+            <p>
+                Desarrollo de una <strong>landing page profesional</strong> para Juli Agencia Creativa, con un máximo de <strong>5 páginas</strong>. Diseñada para presentar la marca, sus servicios y captar clientes potenciales. No incluye e-commerce.
+            </p>
+
+            <!-- SEO Highlight -->
+            <div class="seo-highlight reveal">
+                <div class="seo-badge">
+                    <span class="dot"></span>
+                    Incluido en ambas opciones
+                </div>
+                <h3>100% Optimizada para SEO</h3>
+                <p>
+                    Tu landing page estará completamente optimizada para motores de búsqueda desde el primer día. Esto significa que Google y otros buscadores podrán encontrar, indexar y posicionar tu página de manera efectiva, atrayendo tráfico orgánico sin necesidad de pagar publicidad.
+                </p>
+                <div class="seo-grid">
+                    <div class="seo-item">
+                        <div class="icon">&#128270;</div>
+                        <div class="text">
+                            <strong>Meta tags optimizados</strong>
+                            Title, description y Open Graph para redes sociales
+                        </div>
+                    </div>
+                    <div class="seo-item">
+                        <div class="icon">&#9889;</div>
+                        <div class="text">
+                            <strong>Velocidad de carga</strong>
+                            Código limpio y optimizado para carga ultra rápida
+                        </div>
+                    </div>
+                    <div class="seo-item">
+                        <div class="icon">&#128241;</div>
+                        <div class="text">
+                            <strong>Mobile-first</strong>
+                            Diseño adaptable que Google prioriza en rankings
+                        </div>
+                    </div>
+                    <div class="seo-item">
+                        <div class="icon">&#128196;</div>
+                        <div class="text">
+                            <strong>Estructura semántica</strong>
+                            HTML5 semántico con headings y schema markup
+                        </div>
+                    </div>
+                    <div class="seo-item">
+                        <div class="icon">&#128279;</div>
+                        <div class="text">
+                            <strong>URLs amigables</strong>
+                            Estructura de URLs limpia y descriptiva
+                        </div>
+                    </div>
+                    <div class="seo-item">
+                        <div class="icon">&#128202;</div>
+                        <div class="text">
+                            <strong>Google Analytics</strong>
+                            Integración para medir tráfico y conversiones
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Buttons Highlight -->
+            <div class="social-highlight reveal">
+                <div class="social-highlight-icon">
+                    <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+                </div>
+                <div class="social-highlight-text">
+                    <h4>Botones flotantes de redes sociales</h4>
+                    <p>Botones siempre visibles con acceso directo a WhatsApp, Instagram, Facebook y TikTok. Tus clientes pueden contactarte desde cualquier sección de la página.</p>
+                </div>
+                <div class="social-icons-preview">
+                    <span style="background:#25D366;border-radius:8px"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg></span>
+                    <span style="background:linear-gradient(135deg,#f09433,#dc2743,#bc1888);border-radius:8px"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></span>
+                    <span style="background:#1877F2;border-radius:8px"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></span>
+                    <span style="background:#010101;border:1px solid #333;border-radius:8px"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Options -->
+    <section class="options-section">
+        <div class="section-title reveal">
+            <h2>Opciones de inversión</h2>
+            <p>Selecciona la opción que mejor se ajuste a las necesidades de Juli Agencia Creativa</p>
+        </div>
+
+        <div class="options-grid">
+            <!-- Option 1 -->
+            <div class="option-card option-1 reveal">
+                <span class="option-tag tag-1">Opción A</span>
+                <div class="option-name">Landing Page Esencial</div>
+                <div class="option-desc">Desarrollo profesional de tu landing page (máx. 5 páginas). No incluye diseño gráfico — el cliente proporciona el diseño o mockup. No incluye e-commerce.</div>
+
+                <div class="option-price">
+                    <div class="price-value">
+                        <span class="price-currency">$</span>1'000.000
+                    </div>
+                    <div class="price-note">COP &middot; Pago único &middot; IVA no incluido</div>
+                </div>
+
+                <ul class="option-includes">
+                    <li>
+                        <span class="check check-green"><svg viewBox="0 0 24 24" fill="none" stroke="#98ca3f" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        Landing page (hasta 5 páginas)
+                    </li>
+                    <li>
+                        <span class="check check-green"><svg viewBox="0 0 24 24" fill="none" stroke="#98ca3f" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        100% responsive (móvil, tablet, desktop)
+                    </li>
+                    <li class="highlight-item">
+                        <span class="check check-green"><svg viewBox="0 0 24 24" fill="none" stroke="#98ca3f" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        100% optimizada para SEO
+                    </li>
+                    <li>
+                        <span class="check check-green"><svg viewBox="0 0 24 24" fill="none" stroke="#98ca3f" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        Hosting incluido por 1 año
+                    </li>
+                    <li>
+                        <span class="check check-green"><svg viewBox="0 0 24 24" fill="none" stroke="#98ca3f" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        Certificado SSL (HTTPS)
+                    </li>
+                    <li>
+                        <span class="check check-green"><svg viewBox="0 0 24 24" fill="none" stroke="#98ca3f" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        Formulario de contacto funcional
+                    </li>
+                    <li class="highlight-item">
+                        <span class="check check-green"><svg viewBox="0 0 24 24" fill="none" stroke="#98ca3f" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        Botones flotantes de redes sociales
+                    </li>
+                    <li>
+                        <span class="check check-green"><svg viewBox="0 0 24 24" fill="none" stroke="#98ca3f" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        Integración Google Analytics
+                    </li>
+                    <li>
+                        <span class="check check-green"><svg viewBox="0 0 24 24" fill="none" stroke="#98ca3f" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        Entrega en 7 días hábiles
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Option 2 -->
+            <div class="option-card option-2 reveal">
+                <span class="option-tag tag-2">Opción B &middot; Recomendada</span>
+                <div class="option-name">Landing Page Premium</div>
+                <div class="option-desc">Incluye diseño gráfico personalizado + desarrollo completo (máx. 5 páginas) con animaciones, funcionalidades avanzadas y soporte. No incluye e-commerce.</div>
+
+                <div class="option-price">
+                    <div class="price-value">
+                        <span class="price-currency">$</span>1'500.000
+                    </div>
+                    <div class="price-note">COP &middot; Pago único &middot; IVA no incluido</div>
+                </div>
+
+                <ul class="option-includes">
+                    <li class="highlight-item">
+                        <span class="check check-purple"><svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        Diseño gráfico personalizado incluido
+                    </li>
+                    <li>
+                        <span class="check check-purple"><svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        Landing page (hasta 5 páginas)
+                    </li>
+                    <li>
+                        <span class="check check-purple"><svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        100% responsive con animaciones premium
+                    </li>
+                    <li class="highlight-item">
+                        <span class="check check-purple"><svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        100% optimizada para SEO (avanzado)
+                    </li>
+                    <li>
+                        <span class="check check-purple"><svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        Hosting incluido por 1 año
+                    </li>
+                    <li>
+                        <span class="check check-purple"><svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        Certificado SSL (HTTPS)
+                    </li>
+                    <li>
+                        <span class="check check-purple"><svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        Formulario de contacto + integración email
+                    </li>
+                    <li class="highlight-item">
+                        <span class="check check-purple"><svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        Botones flotantes de redes sociales
+                    </li>
+                    <li>
+                        <span class="check check-purple"><svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        1 correo corporativo
+                    </li>
+                    <li>
+                        <span class="check check-purple"><svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        Google Analytics + Search Console
+                    </li>
+                    <li>
+                        <span class="check check-purple"><svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        1 ronda de revisiones de diseño
+                    </li>
+                    <li>
+                        <span class="check check-purple"><svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        Soporte técnico por 15 días post-entrega
+                    </li>
+                    <li>
+                        <span class="check check-purple"><svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        Entrega en 10 días hábiles
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison -->
+    <section class="comparison-section">
+        <div class="section-title reveal">
+            <h2>Comparativa de opciones</h2>
+        </div>
+
+        <table class="comparison-table reveal">
+            <thead>
+                <tr>
+                    <th>Característica</th>
+                    <th>Opción A</th>
+                    <th>Opción B</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="row-highlight">
+                    <td>Diseño gráfico personalizado</td>
+                    <td><span class="cross-icon">&#10005;</span></td>
+                    <td><span class="check-icon">&#10003; Incluido</span></td>
+                </tr>
+                <tr>
+                    <td>Páginas</td>
+                    <td>Hasta 5</td>
+                    <td>Hasta 5</td>
+                </tr>
+                <tr>
+                    <td>Diseño responsive</td>
+                    <td><span class="check-icon">&#10003;</span></td>
+                    <td><span class="check-icon">&#10003;</span></td>
+                </tr>
+                <tr>
+                    <td>Animaciones avanzadas</td>
+                    <td>Básicas</td>
+                    <td>Premium</td>
+                </tr>
+                <tr class="row-highlight">
+                    <td>SEO 100% optimizado</td>
+                    <td><span class="check-icon">&#10003;</span></td>
+                    <td><span class="check-icon">&#10003; Avanzado</span></td>
+                </tr>
+                <tr class="row-highlight">
+                    <td>Botones flotantes redes sociales</td>
+                    <td><span class="check-icon">&#10003;</span></td>
+                    <td><span class="check-icon">&#10003;</span></td>
+                </tr>
+                <tr>
+                    <td>Hosting (1 año)</td>
+                    <td><span class="check-icon">&#10003;</span></td>
+                    <td><span class="check-icon">&#10003;</span></td>
+                </tr>
+                <tr>
+                    <td>Certificado SSL</td>
+                    <td><span class="check-icon">&#10003;</span></td>
+                    <td><span class="check-icon">&#10003;</span></td>
+                </tr>
+                <tr>
+                    <td>Formulario de contacto</td>
+                    <td>Básico</td>
+                    <td>Avanzado + email</td>
+                </tr>
+                <tr>
+                    <td>Google Analytics</td>
+                    <td><span class="check-icon">&#10003;</span></td>
+                    <td><span class="check-icon">&#10003; + Search Console</span></td>
+                </tr>
+                <tr>
+                    <td>Correos corporativos</td>
+                    <td><span class="cross-icon">&#10005;</span></td>
+                    <td>1 cuenta</td>
+                </tr>
+                <tr>
+                    <td>Revisiones de diseño</td>
+                    <td><span class="cross-icon">&#10005;</span></td>
+                    <td>1 ronda</td>
+                </tr>
+                <tr>
+                    <td>Soporte post-entrega</td>
+                    <td><span class="cross-icon">&#10005;</span></td>
+                    <td>15 días</td>
+                </tr>
+                <tr>
+                    <td>Tiempo de entrega</td>
+                    <td>7 días hábiles</td>
+                    <td>10 días hábiles</td>
+                </tr>
+                <tr>
+                    <td><strong>Inversión</strong></td>
+                    <td><strong>$1'000.000</strong></td>
+                    <td><strong>$1'500.000</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Process -->
+    <section class="process-section">
+        <div class="process-card reveal">
+            <h2>Proceso de trabajo</h2>
+            <div class="timeline">
+                <div class="timeline-step">
+                    <div class="timeline-marker">
+                        <div class="timeline-dot">1</div>
+                        <div class="timeline-line"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <h4>Briefing y requerimientos</h4>
+                        <p>Reunión para definir objetivos, estructura, contenido y preferencias de diseño para la landing page de Juli Agencia Creativa.</p>
+                    </div>
+                </div>
+                <div class="timeline-step">
+                    <div class="timeline-marker">
+                        <div class="timeline-dot">2</div>
+                        <div class="timeline-line"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <h4>Diseño y desarrollo</h4>
+                        <p>Diseño visual, maquetación responsive, implementación SEO y funcionalidades según la opción seleccionada.</p>
+                    </div>
+                </div>
+                <div class="timeline-step">
+                    <div class="timeline-marker">
+                        <div class="timeline-dot">3</div>
+                        <div class="timeline-line"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <h4>Revisión y ajustes</h4>
+                        <p>Presentación del resultado para revisión. Se realizan ajustes según feedback (aplica según opción contratada).</p>
+                    </div>
+                </div>
+                <div class="timeline-step">
+                    <div class="timeline-marker">
+                        <div class="timeline-dot">4</div>
+                        <div class="timeline-line"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <h4>Lanzamiento y entrega</h4>
+                        <p>Configuración del dominio, hosting, SSL y puesta en producción. Entrega de accesos y capacitación básica.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conditions -->
+    <section class="conditions-section">
+        <div class="conditions-card reveal">
+            <h2>Condiciones comerciales</h2>
+            <div class="conditions-grid">
+                <div class="condition-item">
+                    <div class="condition-icon">&#128176;</div>
+                    <div class="condition-text">
+                        <h4>Forma de pago</h4>
+                        <p>60% al iniciar el proyecto, 40% contra entrega final aprobada.</p>
+                    </div>
+                </div>
+                <div class="condition-item">
+                    <div class="condition-icon">&#128197;</div>
+                    <div class="condition-text">
+                        <h4>Vigencia</h4>
+                        <p>Esta cotización es válida por 15 días hábiles a partir de la fecha de emisión.</p>
+                    </div>
+                </div>
+                <div class="condition-item">
+                    <div class="condition-icon">&#128218;</div>
+                    <div class="condition-text">
+                        <h4>Contenido</h4>
+                        <p>El cliente proporcionará textos, imágenes y logotipos. JC2R S.A.S ofrece asesoría en la estructura.</p>
+                    </div>
+                </div>
+                <div class="condition-item">
+                    <div class="condition-icon">&#128218;</div>
+                    <div class="condition-text">
+                        <h4>Dominio web</h4>
+                        <p>El dominio web no está incluido en esta cotización.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Renovación destacada -->
+            <div class="renewal-highlight">
+                <div class="renewal-left">
+                    <div class="renewal-icon">&#128260;</div>
+                    <div>
+                        <h3>Renovación anual de hosting</h3>
+                        <p>Después del primer año, el servicio de hosting se renueva con el siguiente costo anual para mantener tu landing page en línea.</p>
+                    </div>
+                </div>
+                <div class="renewal-price-box">
+                    <div class="renewal-price"><span>$</span>250.000</div>
+                    <div class="renewal-period">COP / año</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signature -->
+    <section class="signature-section">
+        <div class="signature-card reveal">
+            <div class="validity-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Cotización válida hasta el 27 de marzo de 2026
+            </div>
+
+            <h2>Aceptación de la cotización</h2>
+            <p>Para iniciar el proyecto, selecciona una opción y firma este documento.</p>
+
+            <div class="signature-boxes">
+                <div class="sig-box">
+                    <h4>Por JC2R S.A.S</h4>
+                    <div class="sig-name">JC2R S.A.S</div>
+                    <div class="sig-company">Soluciones Digitales</div>
+                    <div class="sig-line"></div>
+                </div>
+                <div class="sig-box">
+                    <h4>Por el cliente</h4>
+                    <div class="sig-name">Juli Agencia Creativa</div>
+                    <div class="sig-company">Representante legal</div>
+                    <div class="sig-line"></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>JC2R S.A.S &middot; Cotización #001-2026 &middot; Documento confidencial &middot; Marzo 2026</p>
+    </footer>
+
+    <script>
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Parallax orbs
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            document.querySelector('.orb-1').style.transform = `translate(${x * -30}px, ${y * 30}px)`;
+            document.querySelector('.orb-2').style.transform = `translate(${x * 20}px, ${y * -20}px)`;
+        });
+    </script>
+
+</body>
+</html>
