@@ -41,13 +41,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <link rel="icon" type="image/png" href="logo.PNG">
     <link rel="apple-touch-icon" href="logo.PNG">
+    <link rel="preload" as="image" href="servicio-opt.jpg">
 
-    <!-- Preconnect for performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
 
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
@@ -305,7 +301,7 @@
         /* ==================== SERVICES CAROUSEL ==================== */
         .services { background: var(--white); overflow: hidden; }
         .services-carousel-wrapper { position: relative; max-width: 1200px; margin: 0 auto; overflow: hidden; padding: 0 clamp(1.5rem, 5vw, 4rem); }
-        .services-row { display: flex; gap: 1.5rem; width: max-content; padding: 0.5rem 0; }
+        .services-row { display: flex; gap: 1.5rem; width: max-content; padding: 0.5rem 0; will-change: transform; }
         .services-row:hover { animation-play-state: paused; }
         .services-row-1 { animation: scroll-svc-left 35s linear infinite; }
         .services-row-2 { animation: scroll-svc-right 40s linear infinite; margin-top: 1.5rem; }
@@ -369,7 +365,7 @@
         /* ==================== TESTIMONIALS MARQUEE ==================== */
         .social-proof { background: var(--gray-50); overflow: hidden; }
         .marquee-wrapper { max-width: 1200px; margin: 0 auto; overflow: hidden; padding: 0 clamp(1.5rem, 5vw, 4rem); }
-        .marquee-row { display: flex; gap: 1.5rem; width: max-content; padding: 0.75rem 0; }
+        .marquee-row { display: flex; gap: 1.5rem; width: max-content; padding: 0.75rem 0; will-change: transform; }
         .marquee-row-1 { animation: marquee-left 40s linear infinite; }
         .marquee-row-2 { animation: marquee-right 45s linear infinite; }
         .marquee-row:hover { animation-play-state: paused; }
@@ -539,7 +535,7 @@
                     </div>
                 </div>
                 <div class="hero-visual fade-up">
-                    <img src="servicio.png" alt="Profissional realizando higienização de colchão com equipamento especializado - Santos Clean Algarve" class="hero-img" width="560" height="560" fetchpriority="high">
+                    <img src="servicio-opt.jpg" alt="Profissional realizando higienização de colchão com equipamento especializado - Santos Clean Algarve" class="hero-img" width="560" height="560" fetchpriority="high">
                     <div class="hero-stats">
                         <div class="hero-stat"><strong>5+</strong><span>Anos em Portugal</span></div>
                         <div class="hero-stat"><strong>100%</strong><span>Satisfação</span></div>
