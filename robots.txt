@@ -23,4 +23,4 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
-Sitemap: https://jamesricardocr.github.io/cleansantos/sitemap.xml
+Sitemap: https://santoscleanpt.com/sitemap.xml
